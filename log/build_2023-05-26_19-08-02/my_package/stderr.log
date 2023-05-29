@@ -1,0 +1,14 @@
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Server.cpp:3:10:[m[K [01;31m[Kfatal error: [m[Kcustom_interfaces/srv/ScanTwi.hpp: No such file or directory
+    3 | #include [01;31m[K"custom_interfaces/srv/ScanTwi.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/scan_Twi_Server.dir/build.make:76: CMakeFiles/scan_Twi_Server.dir/src/Scan_Twi_Server.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/scan_Twi_Server.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Client.cpp:2:10:[m[K [01;31m[Kfatal error: [m[Kcustom_interfaces/srv/ScanTwi.hpp: No such file or directory
+    2 | #include [01;31m[K"custom_interfaces/srv/ScanTwi.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/scan_Twi_Client.dir/build.make:76: CMakeFiles/scan_Twi_Client.dir/src/Scan_Twi_Client.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/scan_Twi_Client.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

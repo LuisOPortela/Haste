@@ -1,0 +1,45 @@
+[35m[1mConsolidate compiler generated dependencies of target scan_Twi_Client[0m
+[35m[1mConsolidate compiler generated dependencies of target scan_Twi_Server[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/scan_Twi_Client.dir/src/Scan_Twi_Client.cpp.o[0m
+[ 75%] Built target scan_Twi_Server
+In file included from [01m[K/home/vboxuser/ros2_humble/build/rclcpp/include/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Client.cpp:1[m[K:
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Client.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Client.cpp:47:49:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 5 has type ‘[01m[Kcustom_interfaces::srv::ScanTwi_Response_<std::allocator<void> >::_output_type[m[K’ {aka ‘[01m[Kstd::__cxx11::basic_string<char>[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   47 |       RCLCPP_INFO(rclcpp::get_logger("rclcpp"), [01;35m[K"Sum: %s"[m[K, result.get()->output);
+      |                                                 [01;35m[K^~~~~~~~~[m[K
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Client.cpp:47:56:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   47 |       RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Sum: [01;36m[K%s[m[K", result.get()->output);
+      |                                                       [01;36m[K~^[m[K
+      |                                                        [01;36m[K|[m[K
+      |                                                        [01;36m[Kchar*[m[K
+[100%] [32m[1mLinking CXX executable scan_Twi_Client[0m
+[100%] Built target scan_Twi_Client
+-- Install configuration: ""
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/lib/my_package/scan_Twi_Client
+-- Set runtime path of "/home/vboxuser/ros2_ws/install/my_package/lib/my_package/scan_Twi_Client" to ""
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/lib/my_package/scan_Twi_Server
+-- Set runtime path of "/home/vboxuser/ros2_ws/install/my_package/lib/my_package/scan_Twi_Server" to ""
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/ament_index/resource_index/package_run_dependencies/my_package
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/ament_index/resource_index/parent_prefix_path/my_package
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/my_package/environment/ament_prefix_path.dsv
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/my_package/environment/path.dsv
+-- Up-to-date: /home/vboxuser/ros2_ws/install/my_package/share/my_package/local_setup.bash
+-- Up-to-date: /home/vboxuser/ros2_ws/install/my_package/share/my_package/local_setup.sh
+-- Up-to-date: /home/vboxuser/ros2_ws/install/my_package/share/my_package/local_setup.zsh
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/my_package/local_setup.dsv
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/my_package/package.dsv
+-- Up-to-date: /home/vboxuser/ros2_ws/install/my_package/share/ament_index/resource_index/packages/my_package
+-- Up-to-date: /home/vboxuser/ros2_ws/install/my_package/share/my_package/cmake/my_packageConfig.cmake
+-- Up-to-date: /home/vboxuser/ros2_ws/install/my_package/share/my_package/cmake/my_packageConfig-version.cmake
+-- Installing: /home/vboxuser/ros2_ws/install/my_package/share/my_package/package.xml

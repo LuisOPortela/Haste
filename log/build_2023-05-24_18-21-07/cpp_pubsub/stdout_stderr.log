@@ -1,0 +1,12 @@
+[35m[1mConsolidate compiler generated dependencies of target talker[0m
+[ 33%] Built target listener
+[ 50%] [32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o[0m
+[ 83%] Built target command_pub
+[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/publisher_member_function.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/publisher_member_function.cpp:56:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kinput[m[K’ was not declared in this scope; did you mean ‘[01m[Kint[m[K’?
+   56 |   std::getline(std::cin, [01;31m[Kinput[m[K);
+      |                          [01;31m[K^~~~~[m[K
+      |                          [32m[Kint[m[K
+gmake[2]: *** [CMakeFiles/talker.dir/build.make:76: CMakeFiles/talker.dir/src/publisher_member_function.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:141: CMakeFiles/talker.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

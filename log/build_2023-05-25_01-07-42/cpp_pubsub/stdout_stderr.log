@@ -1,0 +1,11 @@
+[35m[1mConsolidate compiler generated dependencies of target talker[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/command_pub.dir/src/command_pub_function.cpp.o[0m
+[ 50%] Built target listener
+[ 83%] Built target talker
+[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/command_pub_function.cpp:24:10:[m[K [01;31m[Kfatal error: [m[Kmy_custom_msgs/msg/my_custom_message.hpp: No such file or directory
+   24 | #include [01;31m[K"my_custom_msgs/msg/my_custom_message.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/command_pub.dir/build.make:76: CMakeFiles/command_pub.dir/src/command_pub_function.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/command_pub.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

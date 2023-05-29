@@ -1,0 +1,6 @@
+[35m[1mConsolidate compiler generated dependencies of target scan_Twi_Server[0m
+[35m[1mConsolidate compiler generated dependencies of target scan_Twi_Client[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/scan_Twi_Server.dir/src/Scan_Twi_Server.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/scan_Twi_Client.dir/src/Scan_Twi_Client.cpp.o[0m
+[ 75%] [32m[1mLinking CXX executable scan_Twi_Server[0m
+[ 75%] Built target scan_Twi_Server

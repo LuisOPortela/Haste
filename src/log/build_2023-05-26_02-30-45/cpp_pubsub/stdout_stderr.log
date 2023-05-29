@@ -1,0 +1,31 @@
+[35m[1mConsolidate compiler generated dependencies of target talker[0m
+[35m[1mConsolidate compiler generated dependencies of target listener[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/command_pub.dir/src/command_pub_function.cpp.o[0m
+[ 66%] Built target listener
+[ 83%] [32m[1mLinking CXX executable talker[0m
+[ 83%] Built target talker
+[100%] [32m[1mLinking CXX executable command_pub[0m
+[100%] Built target command_pub
+-- Install configuration: ""
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/lib/cpp_pubsub/command_pub
+-- Set runtime path of "/home/vboxuser/ros2_ws/src/install/cpp_pubsub/lib/cpp_pubsub/command_pub" to ""
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/lib/cpp_pubsub/talker
+-- Set runtime path of "/home/vboxuser/ros2_ws/src/install/cpp_pubsub/lib/cpp_pubsub/talker" to ""
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/lib/cpp_pubsub/listener
+-- Set runtime path of "/home/vboxuser/ros2_ws/src/install/cpp_pubsub/lib/cpp_pubsub/listener" to ""
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/ament_index/resource_index/package_run_dependencies/cpp_pubsub
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/ament_index/resource_index/parent_prefix_path/cpp_pubsub
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.sh
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.dsv
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/environment/path.sh
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/environment/path.dsv
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/local_setup.bash
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/local_setup.sh
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/local_setup.zsh
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/local_setup.dsv
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/package.dsv
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/ament_index/resource_index/packages/cpp_pubsub
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig.cmake
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig-version.cmake
+-- Installing: /home/vboxuser/ros2_ws/src/install/cpp_pubsub/share/cpp_pubsub/package.xml

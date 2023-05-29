@@ -1,0 +1,4 @@
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Server.cpp:[m[K In function ‘[01m[Kvoid Scan(std::shared_ptr<custom_interfaces::srv::ScanTwi_Request_<std::allocator<void> > >, std::shared_ptr<custom_interfaces::srv::ScanTwi_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_Twi_Server.cpp:9:75:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krequest[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+    9 | void Scan([01;35m[Kconst std::shared_ptr<custom_interfaces::srv::ScanTwi::Request> request[m[K,
+      |           [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~[m[K

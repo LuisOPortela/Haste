@@ -1,0 +1,45 @@
+-- Found ament_cmake: 1.3.3 (/home/vboxuser/ros2_humble/install/ament_cmake/share/ament_cmake/cmake)
+-- Found rclcpp: 16.0.3 (/home/vboxuser/ros2_humble/install/rclcpp/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.4 (/home/vboxuser/ros2_humble/install/rosidl_generator_c/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.4 (/home/vboxuser/ros2_humble/install/rosidl_adapter/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.4 (/home/vboxuser/ros2_humble/install/rosidl_generator_cpp/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_introspection_c;rosidl_typesupport_fastrtps_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_introspection_cpp;rosidl_typesupport_fastrtps_cpp
+-- Found rmw_implementation_cmake: 6.1.1 (/home/vboxuser/ros2_humble/install/rmw_implementation_cmake/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.2 (/home/vboxuser/ros2_humble/install/rmw_fastrtps_cpp/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /home/vboxuser/ros2_humble/install/fastrtps/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found custom_interfaces: 0.0.0 (/home/vboxuser/ros2_ws/install/custom_interfaces/share/custom_interfaces/cmake)
+-- Found ament_lint_auto: 0.12.5 (/home/vboxuser/ros2_humble/install/ament_lint_auto/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vboxuser/ros2_ws/build/my_package
+[ 25%] [32mBuilding CXX object CMakeFiles/scan_I2C_Connect_Client.dir/src/Scan_I2C_Connect_Client.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/scan_I2C_Connect_Server.dir/src/Scan_I2C_Connect_Server.cpp.o[0m
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_I2C_Connect_Server.cpp:3:10:[m[K [01;31m[Kfatal error: [m[Kcustom_interfaces/srv/Scan_I2C_connect.hpp: No such file or directory
+    3 | #include [01;31m[K"custom_interfaces/srv/Scan_I2C_connect.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/vboxuser/ros2_ws/src/my_package/src/Scan_I2C_Connect_Client.cpp:2:10:[m[K [01;31m[Kfatal error: [m[Kcustom_interfaces/srv/Scan_I2C_connect.hpp: No such file or directory
+    2 | #include [01;31m[K"custom_interfaces/srv/Scan_I2C_connect.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+compilation terminated.
+gmake[2]: *** [CMakeFiles/scan_I2C_Connect_Client.dir/build.make:76: CMakeFiles/scan_I2C_Connect_Client.dir/src/Scan_I2C_Connect_Client.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/scan_I2C_Connect_Client.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/scan_I2C_Connect_Server.dir/build.make:76: CMakeFiles/scan_I2C_Connect_Server.dir/src/Scan_I2C_Connect_Server.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/scan_I2C_Connect_Server.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
