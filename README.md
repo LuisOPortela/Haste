@@ -1,2 +1,2 @@
 # Haste
-Repository of my thesis
+Repository of my thesisis
