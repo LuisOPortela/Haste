@@ -1,6 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target talker[0m
-[35m[1mConsolidate compiler generated dependencies of target listener[0m
-[ 33%] Built target talker
-[35m[1mConsolidate compiler generated dependencies of target command_pub[0m
-[ 66%] Built target listener
-[ 83%] [32mBuilding CXX object CMakeFiles/command_pub.dir/src/command_pub_function.cpp.o[0m

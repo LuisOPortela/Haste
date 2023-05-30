@@ -1,9 +1,9 @@
 {
   "package_name": "custom_interfaces",
   "non_idl_tuples": [
-    "/home/vboxuser/ros2_ws/src/custom_interfaces:msg/Num.msg",
-    "/home/vboxuser/ros2_ws/src/custom_interfaces:msg/Sphere.msg",
-    "/home/vboxuser/ros2_ws/src/custom_interfaces:srv/AddThreeInts.srv",
-    "/home/vboxuser/ros2_ws/src/custom_interfaces:srv/ScanTwi.srv"
+    "/home/vboxuser/Haste/src/custom_interfaces:msg/Num.msg",
+    "/home/vboxuser/Haste/src/custom_interfaces:msg/Sphere.msg",
+    "/home/vboxuser/Haste/src/custom_interfaces:srv/AddThreeInts.srv",
+    "/home/vboxuser/Haste/src/custom_interfaces:srv/ScanTwi.srv"
   ]
 }

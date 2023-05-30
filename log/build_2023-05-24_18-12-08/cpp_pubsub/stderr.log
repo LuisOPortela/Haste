@@ -1,8 +1,0 @@
-[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/command_pub_function.cpp:[m[K In member function ‘[01m[Kvoid CommandPublisher::timer_callback()[m[K’:
-[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/command_pub_function.cpp:66:5:[m[K [01;31m[Kerror: [m[K‘[01m[KRLCPP_INFO[m[K’ was not declared in this scope; did you mean ‘[01m[KRCLCPP_INFO[m[K’?
-   66 |     [01;31m[KRLCPP_INFO[m[K(this->get_logger(), "Processing timer callback:");
-      |     [01;31m[K^~~~~~~~~~[m[K
-      |     [32m[KRCLCPP_INFO[m[K
-gmake[2]: *** [CMakeFiles/command_pub.dir/build.make:76: CMakeFiles/command_pub.dir/src/command_pub_function.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/command_pub.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

@@ -9,5 +9,4 @@ custom_interfaces/msg/_num.py
 custom_interfaces/msg/_sphere.py
 custom_interfaces/srv/__init__.py
 custom_interfaces/srv/_add_three_ints.py
-custom_interfaces/srv/_scan_i2_cconnect.py
 custom_interfaces/srv/_scan_twi.py

@@ -182,18 +182,18 @@ class ScanTwi_Response(metaclass=Metaclass_ScanTwi_Response):
     ]
 
     _fields_and_field_types = {
-        'output': 'int64',
+        'output': 'string',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        self.output = kwargs.get('output', int())
+        self.output = kwargs.get('output', str())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -242,10 +242,8 @@ class ScanTwi_Response(metaclass=Metaclass_ScanTwi_Response):
     def output(self, value):
         if __debug__:
             assert \
-                isinstance(value, int), \
-                "The 'output' field must be of type 'int'"
-            assert value >= -9223372036854775808 and value < 9223372036854775808, \
-                "The 'output' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+                isinstance(value, str), \
+                "The 'output' field must be of type 'str'"
         self._output = value
 
 

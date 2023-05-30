@@ -1,7 +1,0 @@
-[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/command_pub_function.cpp:[m[K In member function ‘[01m[Kvoid CommandPublisher::publish_message(std::string)[m[K’:
-[01m[K/home/vboxuser/ros2_ws/src/cpp_pubsub/src/command_pub_function.cpp:52:10:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kwaiting_message[m[K’ in ‘[01m[K(CommandPublisher*)this[m[K’, which is of pointer type ‘[01m[KCommandPublisher*[m[K’ (maybe you meant to use ‘[01m[K->[m[K’ ?)
-   52 |     this.[01;31m[Kwaiting_message[m[K =1;
-      |          [01;31m[K^~~~~~~~~~~~~~~[m[K
-gmake[2]: *** [CMakeFiles/command_pub.dir/build.make:76: CMakeFiles/command_pub.dir/src/command_pub_function.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/command_pub.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

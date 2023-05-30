@@ -1,9 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000311] (-) JobUnselected: {'identifier': 'my_custom_msgs'}
-[0.000343] (-) JobUnselected: {'identifier': 'my_package'}
-[0.000357] (-) JobUnselected: {'identifier': 'turtlesim'}
-[0.000369] (-) JobUnselected: {'identifier': 'tutorial_interfaces'}
-[0.000383] (cpp_pubsub) JobQueued: {'identifier': 'cpp_pubsub', 'dependencies': OrderedDict([('my_custom_msgs', '/home/vboxuser/ros2_ws/src/install/my_custom_msgs'), ('tutorial_interfaces', '/home/vboxuser/ros2_ws/src/install/tutorial_interfaces')])}
-[0.000405] (cpp_pubsub) JobStarted: {'identifier': 'cpp_pubsub'}
-[0.068814] (cpp_pubsub) JobEnded: {'identifier': 'cpp_pubsub', 'rc': 1}
-[0.095867] (-) EventReactorShutdown: {}

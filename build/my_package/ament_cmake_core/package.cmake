@@ -1,6 +1,6 @@
 set(_AMENT_PACKAGE_NAME "my_package")
 set(my_package_VERSION "0.0.0")
-set(my_package_MAINTAINER "vboxuser <vboxuser@haste.com>")
+set(my_package_MAINTAINER "vboxuser <vboxuser@todo.todo>")
 set(my_package_BUILD_DEPENDS "rclcpp" "custom_interfaces")
 set(my_package_BUILDTOOL_DEPENDS "ament_cmake")
 set(my_package_BUILD_EXPORT_DEPENDS "rclcpp" "custom_interfaces")
