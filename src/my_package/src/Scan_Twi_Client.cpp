@@ -1,4 +1,3 @@
-
 #include "rclcpp/rclcpp.hpp"
 #include "custom_interfaces/srv/scan_twi.hpp"
 
@@ -9,7 +8,7 @@
 using namespace std::chrono_literals;
 
 //DELETE THIS
-int i;
+
 
 int main(int argc, char **argv)
 {
