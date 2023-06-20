@@ -151,6 +151,7 @@ class I2cScanner : public rclcpp::Node
       //CREATE UNCREATED NODES
       if(nodes_to_create.size()!=0)
       {
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING");
         for(uint8_t adress : nodes_to_create)
         {
           //get type
