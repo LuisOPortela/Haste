@@ -109,10 +109,10 @@ class I2cScanner : public rclcpp::Node
       std::vector<uint8_t> adresses;
       auto message = std_msgs::msg::UInt8MultiArray();
       
-      
+      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Scanning");
     	for (i = first_adress; i < last_adress; i++)
     	{
-    		RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Scanning");
+    		
         
     		ioctl(file, I2C_SLAVE, i);
     	
@@ -135,6 +135,7 @@ class I2cScanner : public rclcpp::Node
     void node_creator(std::vector<uint8_t> adresses)
     {
       
+      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "NODE_CREATOR");
       std::vector<uint8_t> nodes_to_create;
       
       //CHECK FOR UNCREATED NODES
@@ -160,7 +161,6 @@ class I2cScanner : public rclcpp::Node
           ioctl(file, I2C_SLAVE, adress);
           
           write(file, M, 1);
-          
           read (file, M, 1);
           
           ///get params for specific module type
