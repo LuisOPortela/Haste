@@ -78,7 +78,7 @@ class I2cScanner : public rclcpp::Node
     {
       
       publisher_ = this->create_publisher<std_msgs::msg::UInt8MultiArray>(Node_name, 10);
-      timer_ = this->create_wall_timer(Frequency, std::bind(&I2cScanner::timer_callback, this));
+      timer_ = this->create_wall_timer(2000ms, std::bind(&I2cScanner::timer_callback, this));
     
       char *bus = "/dev/i2c-1";
       if((file = open(bus, O_RDWR)) < 0)
@@ -94,6 +94,7 @@ class I2cScanner : public rclcpp::Node
     //Timer_callback is the Main loop of the node
     void timer_callback()
     {
+      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Timer_Callback");
       std::vector<uint8_t> adresses=module_scanner();
       node_creator(adresses);
     }
@@ -101,13 +102,14 @@ class I2cScanner : public rclcpp::Node
     //Scans the connected modules in the I2C bus
     std::vector<uint8_t> module_scanner()
     {
+      
       int i,j;
       uint8_t data[1] = {0};
       
       std::vector<uint8_t> adresses;
       auto message = std_msgs::msg::UInt8MultiArray();
       
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Timer_Callback");
+      
     	for (i = first_adress; i < last_adress; i++)
     	{
     		RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Scanning");
@@ -127,6 +129,7 @@ class I2cScanner : public rclcpp::Node
       }
       
       //publisher_->publish(message);
+      return adresses;
     }
 
     void node_creator(std::vector<uint8_t> adresses)
@@ -157,6 +160,7 @@ class I2cScanner : public rclcpp::Node
           ioctl(file, I2C_SLAVE, adress);
           
           write(file, M, 1);
+          
           read (file, M, 1);
           
           ///get params for specific module type
