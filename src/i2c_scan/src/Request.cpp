@@ -136,15 +136,18 @@ class I2cScanner : public rclcpp::Node
     {
       
       RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "NODE_CREATOR");
-      std::vector<uint8_t> nodes_to_create;
+      std::vector<uint8_t> nodes_to_create={};
       
       //CHECK FOR UNCREATED NODES
+      bool aux_created;
       for(uint8_t adress : adresses){
+        aux_created=0;
         for(const auto& module :created_nodes)
         {
           if (adress==module.adress)
-            break;
+            aux_created=1;
         }  
+        if (aux_created==0)
         nodes_to_create.push_back(adress);
       }
       
