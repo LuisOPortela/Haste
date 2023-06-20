@@ -180,7 +180,7 @@ class I2cScanner : public rclcpp::Node
             case 1:       //TYPE 1 MODULE SIMPLE SENSOR
             {
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING-TYPE 1");
-              uint8_t M_1 [T1_MESSAGE_1_SIZE]={};
+              char M_1 [T1_MESSAGE_1_SIZE]={0};
               type1_params new_node;
 
               //ask for all parameeters except for max_value//
@@ -188,13 +188,17 @@ class I2cScanner : public rclcpp::Node
               
               write(file, M, 1); 
               read (file, M_1, T1_MESSAGE_1_SIZE);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "1st value: %c",M_1[0]);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "2nd value: %c",M_1[1]);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "3rd value: %c",M_1[2]);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "17th value: %c",M_1[17]);
 
               char* aux=(char*) M_1;
               std::string aux_name(aux,NODE_NAME_SIZE);
 
               new_node.name = aux_name;
-              new_node.measure_frequency = M_1[15]*256 + M_1[16];    //NOT READY FOR CHANGE OF SIZE OF PARAMETERS
-              new_node.number_of_values  = M_1[17];
+              new_node.measure_frequency = (int)M_1[15]*256 + (int)M_1[16];    //NOT READY FOR CHANGE OF SIZE OF PARAMETERS
+              new_node.number_of_values  = (int)M_1[17];
               
               //ask for max_values//
               int M_2_size=new_node.number_of_values*SINGLE_MAX_VALUE_SIZE;
