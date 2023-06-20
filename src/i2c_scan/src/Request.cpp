@@ -194,7 +194,7 @@ class I2cScanner : public rclcpp::Node
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "1st value: %c",M_1[0]);
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "2nd value: %c",M_1[1]);
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "3rd value: %c",M_1[2]);
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "17th value: %c",M_1[17]);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "17th value: %x",M_1[17]);
 
               std::string aux_name(M_1,NODE_NAME_SIZE);
 
@@ -220,7 +220,7 @@ class I2cScanner : public rclcpp::Node
                 j++;
               }  
               */
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node.name);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node.name.c_str());
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.measure_frequency: %d",new_node.measure_frequency);
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.number_of_values: %d",new_node.number_of_values);
               /*
