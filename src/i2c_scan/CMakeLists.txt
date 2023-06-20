@@ -9,10 +9,11 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(my_library REQUIRED)
 
 
 add_executable(i2c_Scan_Print src/Request.cpp)
-ament_target_dependencies(i2c_Scan_Print rclcpp std_msgs)
+ament_target_dependencies(i2c_Scan_Print rclcpp std_msgs my_library)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
