@@ -144,6 +144,7 @@ class I2cScanner : public rclcpp::Node
         aux_created=0;
         for(const auto& module :created_nodes)
         {
+          
           if (adress==module.adress)
             aux_created=1;
         }  
@@ -151,6 +152,12 @@ class I2cScanner : public rclcpp::Node
         nodes_to_create.push_back(adress);
       }
       
+
+
+
+
+
+
       //CREATE UNCREATED NODES
       if(nodes_to_create.size()!=0)
       {
@@ -172,7 +179,8 @@ class I2cScanner : public rclcpp::Node
           {
             case 1:       //TYPE 1 MODULE SIMPLE SENSOR
             {
-              uint8_t M_1 [T1_MESSAGE_1_SIZE]={};;
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING-TYPE 1");
+              uint8_t M_1 [T1_MESSAGE_1_SIZE]={};
               type1_params new_node;
 
               //ask for all parameeters except for max_value//
@@ -190,13 +198,13 @@ class I2cScanner : public rclcpp::Node
               
               //ask for max_values//
               int M_2_size=new_node.number_of_values*SINGLE_MAX_VALUE_SIZE;
-            
+              /*
               std::vector<uint8_t> M_2(M_2_size);
               
               M[0]=M_T1_PARAMS_2;
               
               write(file, M, 1); 
-              read (file, M_2.data(), M_2_size);
+              read (file, M_2.data(), M_2_size); //check this
 
               int j=0;
               for(int i=0;i<M_2.size();i+=2)
@@ -205,16 +213,16 @@ class I2cScanner : public rclcpp::Node
                 new_node.max_value[j]=M_2[i]*256+M_2[i+1];
                 j++;
               }  
-              
+              */
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node.name);
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.measure_frequency: %d",new_node.measure_frequency);
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.number_of_values: %d",new_node.number_of_values);
-              
+              /*
               for(int i=0;i<new_node.max_value.size();i+=1)
               {
                 RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.max_value(%d): %d",i,new_node.max_value[i]);
               }
-
+              */
               
               module_name_adress aux_module;
               aux_module.name=new_node.name;
@@ -225,6 +233,9 @@ class I2cScanner : public rclcpp::Node
               break;
             /*
             case 31:       
+              
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING-TYPE 31");
+              
               uint8_t M_1[T31_MESSAGE_1_SIZE]={} 
               type31_params new_node;
 
@@ -253,6 +264,8 @@ class I2cScanner : public rclcpp::Node
             }
             default:
             {
+             
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING- TYPE NOT FOUND");
               break;
             }
           }
