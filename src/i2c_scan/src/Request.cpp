@@ -235,6 +235,14 @@ class I2cScanner : public rclcpp::Node
               aux_module.adress=adress;
               created_nodes.push_back(aux_module);
               
+              std::string command="ros2 run type1_node type1_node --remap __node:="+new_node.name+" --ros-args -p measure_frequency:=" +std::to_string(new_node.measure_frequency);
+
+              FILE* pipe=popen(command.c_str(), "r");
+              if (!pipe){
+                throw std::runtime_error("Failed to execute command.");
+              } 
+              pclose(pipe);
+
               //create node with this params
               break;
             /*

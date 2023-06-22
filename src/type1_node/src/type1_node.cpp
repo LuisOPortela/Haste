@@ -30,8 +30,8 @@ class Type1_Node : public rclcpp::Node
     : Node(name), count_(0)
     {
       declare_parameter("name","type1_default");
-      declare_parameter("measure_frequency","500");
-      declare_parameter("number_of_values","1");
+      declare_parameter("measure_frequency",500);
+      declare_parameter("number_of_values",1);
 
       get_parameter("name",name_);
       get_parameter("measure_frequency",measure_frequency_);
@@ -42,7 +42,7 @@ class Type1_Node : public rclcpp::Node
       auto aux_timer =std::chrono::milliseconds(measure_frequency_);
       publisher_ = this->create_publisher<std_msgs::msg::Int16>(aux_topic+name_, 10);
       timer_ = this->create_wall_timer(
-      std::chrono::milliseconds(measure_frequency_), std::bind(&Type1_Node::timer_callback, this));
+      aux_timer, std::bind(&Type1_Node::timer_callback, this));
     
       char *bus = "/dev/i2c-1";
       if((file = open(bus, O_RDWR)) < 0)
@@ -70,11 +70,6 @@ class Type1_Node : public rclcpp::Node
     {
       auto message = std_msgs::msg::Int16();
   
-
-      RCLCPP_INFO(this->get_logger(), "Publishing: '%d'", message.data);
-
-
-
       ioctl(file, I2C_SLAVE, 0x20);
 
     
