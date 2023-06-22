@@ -61,7 +61,7 @@ uint8_t adress;
 
 /*######I2C_Scan Parameters######*/
 std::string Node_name = "Topic_Node_name";
-std::chrono::milliseconds Frequency = 2000ms;
+std::chrono::milliseconds Frequency = 3000ms;
 uint8_t first_adress= 0x10, last_adress= 0x30;
 
 /*###############################*/
@@ -237,11 +237,23 @@ class I2cScanner : public rclcpp::Node
               
               std::string command="ros2 run type1_node type1_node --remap __node:="+new_node.name+" --ros-args -p measure_frequency:=" +std::to_string(new_node.measure_frequency);
 
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
+              std::string result;
+              std::array<char, 128> buffer;
+
               FILE* pipe=popen(command.c_str(), "r");
               if (!pipe){
-                throw std::runtime_error("Failed to execute command.");
+                RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "oops? PAPII CADETU");
               } 
+              
+              while (fgets(buffer.data(),buffer.size(),pipe)!= nullptr) {
+                result += buffer.data();
+              }
+
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "FEEDBACK DA CONSOLA: %s",result.data());
+
               pclose(pipe);
+
 
               //create node with this params
               break;
