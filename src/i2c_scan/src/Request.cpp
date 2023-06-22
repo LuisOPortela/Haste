@@ -235,8 +235,8 @@ class I2cScanner : public rclcpp::Node
               aux_module.adress=adress;
               created_nodes.push_back(aux_module);
               
-              
-              std::string command="ros2 run type1_node type1_node --remap __node:="+new_node.name+" --ros-args -p measure_frequency:=" +std::to_string(new_node.measure_frequency);
+
+              std::string command="ros2 run type1_node type1_node --ros-args --remap __node:="+new_node.name+" -p measure_frequency:=" +std::to_string(new_node.measure_frequency);
 
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
               std::string result;
