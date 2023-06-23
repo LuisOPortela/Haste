@@ -24,9 +24,9 @@ std::vector<int> max_value={};
 };
 
 struct type31_params{
-std::string name;
-std::string sensor_name;
-int on_percentage;   //set max to 100
+std::string name={};
+std::string sensor_name={};
+int on_percentage=0;   //set max to 100
 };
 
 struct module_name_adress{
@@ -45,7 +45,7 @@ uint8_t adress;
 //Type3.1 params
 #define NODE_NAME_SIZE 15
 #define SENSOR_NAME_SIZE 15
-#define ACTIVATION_PERCENTAGE 1  
+#define ACTIVATION_PERCENTAGE_SIZE 1  
 
 
 //Ms 
@@ -55,7 +55,7 @@ uint8_t adress;
 #define M_T31_PARAMS_1 2
 
 #define T1_MESSAGE_1_SIZE NODE_NAME_SIZE+MEASURE_FREQUENCY_SIZE+NUMBER_OF_VALUE_SIZE
-#define T31_MESSAGE_1_SIZE  NODE_NAME_SIZE+SENSOR_NAME_SIZE+ACTIVATION_PERCENTAGE
+#define T31_MESSAGE_1_SIZE  NODE_NAME_SIZE+SENSOR_NAME_SIZE+ACTIVATION_PERCENTAGE_SIZE
 
 /*###############################*/
 
@@ -183,8 +183,7 @@ class I2cScanner : public rclcpp::Node
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING-TYPE 1");
               char M_1[T1_MESSAGE_1_SIZE]={};
               
-              
-              type1_params new_node;
+              type1_params new_node_1;
 
               //ask for all parameeters except for max_value//
               M[0]=M_T1_PARAMS_1;
@@ -198,13 +197,13 @@ class I2cScanner : public rclcpp::Node
 
               std::string aux_name(M_1,NODE_NAME_SIZE);
 
-              new_node.name = aux_name;
-              new_node.measure_frequency = (int)M_1[15]*256 + (int)M_1[16];    //NOT READY FOR CHANGE OF SIZE OF PARAMETERS
-              new_node.number_of_values  = (int)M_1[17];
-              
-              //ask for max_values//
-              int M_2_size=new_node.number_of_values*SINGLE_MAX_VALUE_SIZE;
+              new_node_1.name = aux_name;
+              new_node_1.measure_frequency = (int)M_1[15]*256 + (int)M_1[16];    //NOT READY FOR CHANGE OF SIZE OF PARAMETERS
+              new_node_1.number_of_values  = (int)M_1[17];
               /*
+              //ask for max_values//
+              int M_2_size=new_node_1.number_of_values*SINGLE_MAX_VALUE_SIZE;
+              
               std::vector<uint8_t> M_2(M_2_size);
               
               M[0]=M_T1_PARAMS_2;
@@ -220,9 +219,9 @@ class I2cScanner : public rclcpp::Node
                 j++;
               }  
               */
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node.name.c_str());
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.measure_frequency: %d",new_node.measure_frequency);
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.number_of_values: %d",new_node.number_of_values);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node_1.name.c_str());
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.measure_frequency: %d",new_node_1.measure_frequency);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.number_of_values: %d",new_node_1.number_of_values);
               /*
               for(int i=0;i<new_node.max_value.size();i+=1)
               {
@@ -231,12 +230,13 @@ class I2cScanner : public rclcpp::Node
               */
               
               module_name_adress aux_module;
-              aux_module.name=new_node.name;
+              aux_module.name=new_node_1.name;
               aux_module.adress=adress;
               created_nodes.push_back(aux_module);
               
 
-              std::string command="ros2 run type1_node type1_node --ros-args --remap __node:="+new_node.name+" -p measure_frequency:=" +std::to_string(new_node.measure_frequency);
+              std::string command="ros2 run type1_node type1_node --ros-args --remap __node:="
+              +new_node_1.name+" -p measure_frequency:=" +std::to_string(new_node_1.measure_frequency)+"-p name:=" +new_node_1.name+ " &";
 
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
               std::string result;
@@ -258,32 +258,57 @@ class I2cScanner : public rclcpp::Node
 
               //create node with this params
               break;
-            /*
+            }
             case 31:       
-              
+            {
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING-TYPE 31");
               
-              uint8_t M_1[T31_MESSAGE_1_SIZE]={} 
-              type31_params new_node;
+              char M_1[T31_MESSAGE_1_SIZE]={}; 
+              type31_params new_node_31;
 
-              //ask for all parameeters except for max_value//
-              M[0]=M_T3_PARAMS_1;
+              M[0]=M_T31_PARAMS_1;
               
               write(file, M, 1); 
               read (file, M_1, T31_MESSAGE_1_SIZE);
 
-              std::string aux_name(reinterpret_cast<char*>(M_1),reinterpret_cast<char*>(M_1)+NODE_NAME_SIZE);
-              new_node.name = aux_name
-              
-              aux_name(reinterpret_cast<char*>(&M_1[NODE_NAME_SIZE],SENSOR_NAME_SIZE);
-              new_node.sensor_name = aux_name;
+              std::string aux_name_1(M_1,NODE_NAME_SIZE);
+              new_node_31.name = aux_name_1;
 
-              new_node.on_percentage = M_1[30];
+              std::string aux_name_2(M_1 + NODE_NAME_SIZE,SENSOR_NAME_SIZE);
+              new_node_31.sensor_name = aux_name_2;
+
+              new_node_31.on_percentage = M_1[NODE_NAME_SIZE+SENSOR_NAME_SIZE];
+
+              module_name_adress aux_module;
+              aux_module.name=new_node_31.name;
+              aux_module.adress=adress;
+              created_nodes.push_back(aux_module);
               
+
+              std::string command="ros2 run type31_node type31_node --ros-args --remap __node:="+new_node_31.name+" -p sensor_name:="
+               + new_node_31.sensor_name+" -p on_percentage"+ std::to_string(new_node_31.on_percentage)+ " &";
+
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
+              std::string result;
+              std::array<char, 128> buffer;
+
+              FILE* pipe=popen(command.c_str(), "r");
+              if (!pipe){
+                RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "oops? PAPII CADETU");
+              } 
+              
+              while (fgets(buffer.data(),buffer.size(),pipe)!= nullptr) {
+                result += buffer.data();
+              }
+
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "FEEDBACK DA CONSOLA: %s",result.data());
+
+              pclose(pipe);
+
 
               break;
             
-            */
+            
             }
             case 4:
             {  /* code */
@@ -295,6 +320,7 @@ class I2cScanner : public rclcpp::Node
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING- TYPE NOT FOUND");
               break;
             }
+         
           }
           //execute node
         }
@@ -304,13 +330,7 @@ class I2cScanner : public rclcpp::Node
     
     
     }
-/*  
-    void type1_module_data_publisher()
-    {
 
-    }
-
-*/
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::UInt8MultiArray>::SharedPtr publisher_;
     int file;

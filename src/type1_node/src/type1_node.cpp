@@ -27,7 +27,7 @@ class Type1_Node : public rclcpp::Node
 {
   public:
     Type1_Node(const std::string &name)
-    : Node(name), count_(0)
+    : Node(name)
     {
       declare_parameter("name","type1_default");
       declare_parameter("measure_frequency",500);
@@ -59,11 +59,10 @@ class Type1_Node : public rclcpp::Node
   private:
     //Params list
     std::string name_;
-    int measure_frequency_=500;
+    int measure_frequency_;
     //assuming number of values is always 1
-    int number_of_values_=1;
-    
-    std::vector<int> max_value_={};
+    int number_of_values_;
+    std::vector<int> max_value_;
     
 
     void timer_callback()
@@ -84,7 +83,6 @@ class Type1_Node : public rclcpp::Node
     }
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::Int16>::SharedPtr publisher_;
-    size_t count_;
     int file;
 
 };
