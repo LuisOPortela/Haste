@@ -77,7 +77,6 @@ class Type1_Node : public rclcpp::Node
       read (file, reg, 2);
       message.data=reg[0]*256+reg[1];
       
-      RCLCPP_INFO(this->get_logger(), "Publishing: '%d'", message.data);
       publisher_->publish(message);
 
     }

@@ -280,6 +280,11 @@ class I2cScanner : public rclcpp::Node
 
               new_node_31.on_percentage = M_1[NODE_NAME_SIZE+SENSOR_NAME_SIZE];
 
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node_31.name.c_str());
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.sensor_name: %s",new_node_31.sensor_name.c_str());
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.on_percentage: %d",new_node_31.on_percentage);
+              
+              
               module_name_adress aux_module;
               aux_module.name=new_node_31.name;
               aux_module.adress=adress;
