@@ -67,7 +67,7 @@ class Type31_Node : public rclcpp::Node
       int8_t state[1] = {};
       if(percentage>on_percentage_) // ON
         state[0]=11;
-        
+
       
       if(percentage>on_percentage_) // ON
         state[0]=10;
@@ -75,7 +75,7 @@ class Type31_Node : public rclcpp::Node
       ioctl(file, I2C_SLAVE, 0x14);
       write(file, state, 1);
 
-      RCLCPP_INFO(this->get_logger(), "GOT:%d , Sending state: '%d'",msg, state[0]);
+      RCLCPP_INFO(this->get_logger(), "GOT:%d , Sending state: '%d'",msg.data, state[0]);
 
     }
 
