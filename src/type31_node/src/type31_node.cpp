@@ -69,13 +69,13 @@ class Type31_Node : public rclcpp::Node
         state[0]=11;
 
       
-      if(percentage>on_percentage_) // ON
+      else if(percentage<on_percentage_) // ON
         state[0]=10;
       
       ioctl(file, I2C_SLAVE, 0x14);
       write(file, state, 1);
 
-      RCLCPP_INFO(this->get_logger(), "GOT:%d , Sending state: '%d'",msg.data, state[0]);
+      RCLCPP_INFO(this->get_logger(), "GOT:%d ,Max value: %d Percentage:%f Sending state: '%d'",msg.data,max_value, percentage, state[0]);
 
     }
 

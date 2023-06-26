@@ -297,9 +297,11 @@ class I2cScanner : public rclcpp::Node
 
               //GET PARAMETER ON_PERCENTAGE
 
-              new_node_31.on_percentage = M_1[NODE_NAME_SIZE+SENSOR_NAME_SIZE];
+              new_node_31.on_percentage = (int)M_1[NODE_NAME_SIZE+SENSOR_NAME_SIZE];
 
-
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "M_1 29: %d ",(int) M_1[29]);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "M_1 30: %d ",(int) M_1[30]);
+              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "M_1 31: %d ",(int) M_1[31]);
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node_31.name.c_str());
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.sensor_name: %s",new_node_31.sensor_name.c_str());
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.on_percentage: %d",new_node_31.on_percentage);
@@ -313,7 +315,7 @@ class I2cScanner : public rclcpp::Node
               
               //CREATE NODE
 
-              std::string command="ros2 run type31_node type31_node --ros-args --remap __node:="+new_node_31.name+" -p sensor_name:=" + new_node_31.sensor_name+" -p on_percentage" + std::to_string(new_node_31.on_percentage)+ " &";
+              std::string command="ros2 run type31_node type31_node --ros-args --remap __node:="+new_node_31.name+" -p sensor_name:=" + new_node_31.sensor_name+" -p on_percentage:=" + std::to_string(new_node_31.on_percentage)+ " &";
 
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
               std::string result;
