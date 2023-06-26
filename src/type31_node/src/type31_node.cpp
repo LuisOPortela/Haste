@@ -62,7 +62,7 @@ class Type31_Node : public rclcpp::Node
       //ADRESSO DEVE SER RECEBIDO TBM
       //Max Value deve ser recebido do sensor
       int max_value=103;
-      float percentage= (float)msg.data/max_value;
+      int percentage= msg.data*100/max_value;
 
 
       //DELETE THIS, ON PERCENTAGE BEING FORCED BEACAUSE CANT CORRECT BUG IN MICRO
@@ -80,7 +80,7 @@ class Type31_Node : public rclcpp::Node
       ioctl(file, I2C_SLAVE, 0x14);
       write(file, state, 1);
 
-      RCLCPP_INFO(this->get_logger(), "GOT:%d ,Max value: %d Percentage:%f Sending state: '%d'",msg.data,max_value, percentage, state[0]);
+      RCLCPP_INFO(this->get_logger(), "GOT:%d ,Max value: %d Percentage:%d Sending state: '%d'",msg.data,max_value, percentage, state[0]);
 
     }
 
