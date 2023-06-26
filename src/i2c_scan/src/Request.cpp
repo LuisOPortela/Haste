@@ -243,7 +243,7 @@ class I2cScanner : public rclcpp::Node
               std::string result;
               std::array<char, 128> buffer;
 
-              FILE* pipe=popen(command.c_str(), "r");
+              FILE* pipe=popen(command.c_str(), "w"); //change to r to see console output
               if (!pipe){
                 RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "oops? PAPII CADETU");
               } 
@@ -260,6 +260,8 @@ class I2cScanner : public rclcpp::Node
               //create node with this params
               break;
             }
+            
+            
             case 31:       
             {
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING-TYPE 31");
@@ -272,26 +274,44 @@ class I2cScanner : public rclcpp::Node
               write(file, M, 1); 
               read (file, M_1, T31_MESSAGE_1_SIZE);
 
-              std::string aux_name_1(M_1,NODE_NAME_SIZE);
+              //GET PARAMETER NAME
+
+              size_t aux_length = 0;
+              while(M_1[aux_length] != '\0'){
+                aux_length++;
+              }
+
+              std::string aux_name_1(M_1,aux_length);
               new_node_31.name = aux_name_1;
 
-              std::string aux_name_2(M_1 + NODE_NAME_SIZE,SENSOR_NAME_SIZE);
+              //GET PARAMETER SENSOR NAME
+
+
+              aux_length = NODE_NAME_SIZE;
+              while(M_1[aux_length] != '\0'){
+                aux_length++;
+              }
+
+              std::string aux_name_2(M_1 + NODE_NAME_SIZE,aux_length-NODE_NAME_SIZE);
               new_node_31.sensor_name = aux_name_2;
 
+              //GET PARAMETER ON_PERCENTAGE
+
               new_node_31.on_percentage = M_1[NODE_NAME_SIZE+SENSOR_NAME_SIZE];
+
 
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.name: %s ",new_node_31.name.c_str());
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.sensor_name: %s",new_node_31.sensor_name.c_str());
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node.on_percentage: %d",new_node_31.on_percentage);
               
+              //STORE IN CREATED_NODES
               
               module_name_adress aux_module;
-              aux_module.name=new_node_31.name;
+              aux_module.name=new_node_31.name;   
               aux_module.adress=adress;
               created_nodes.push_back(aux_module);
               
-              new_node_31.name.pop_back(); //line needed to cut null signal at the end of string
-              new_node_31.sensor_name.pop_back(); //line needed to cut null signal at the end of string
+              //CREATE NODE
 
               std::string command="ros2 run type31_node type31_node --ros-args --remap __node:="+new_node_31.name+" -p sensor_name:=" + new_node_31.sensor_name+" -p on_percentage" + std::to_string(new_node_31.on_percentage)+ " &";
 
