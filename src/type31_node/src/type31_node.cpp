@@ -62,10 +62,10 @@ class Type31_Node : public rclcpp::Node
       //ADRESSO DEVE SER RECEBIDO TBM
       //Max Value deve ser recebido do sensor
       int max_value=103;
-      float percentage= msg.data/max_value;
+      float percentage= (int)msg.data/max_value;
 
       int8_t state[1] = {};
-      if(percentage>on_percentage_) // ON
+      if(percentage>=on_percentage_) // ON
         state[0]=11;
 
       
