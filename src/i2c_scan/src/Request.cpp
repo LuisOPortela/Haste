@@ -234,8 +234,10 @@ class I2cScanner : public rclcpp::Node
               aux_module.adress=adress;
               created_nodes.push_back(aux_module);
               
+              new_node_1.name.pop_back(); //line needed to cut null signal at the end of string
 
-              std::string command="ros2 run type1_node type1_node --ros-args --remap __node:=" +new_node_1.name+ " -p measure_frequency:=" +std::to_string(new_node_1.measure_frequency)+ "-p name:=" +new_node_1.name+ " &";
+
+              std::string command="ros2 run type1_node type1_node --ros-args --remap __node:=" +new_node_1.name+ " -p measure_frequency:=" +std::to_string(new_node_1.measure_frequency)+ " -p name:=" +new_node_1.name+ " &";
 
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
               std::string result;
@@ -283,6 +285,8 @@ class I2cScanner : public rclcpp::Node
               aux_module.adress=adress;
               created_nodes.push_back(aux_module);
               
+              new_node_31.name.pop_back(); //line needed to cut null signal at the end of string
+              new_node_31.sensor_name.pop_back(); //line needed to cut null signal at the end of string
 
               std::string command="ros2 run type31_node type31_node --ros-args --remap __node:="+new_node_31.name+" -p sensor_name:=" + new_node_31.sensor_name+" -p on_percentage" + std::to_string(new_node_31.on_percentage)+ " &";
 
