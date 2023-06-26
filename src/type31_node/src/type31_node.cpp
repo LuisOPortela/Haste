@@ -62,7 +62,12 @@ class Type31_Node : public rclcpp::Node
       //ADRESSO DEVE SER RECEBIDO TBM
       //Max Value deve ser recebido do sensor
       int max_value=103;
-      float percentage= (int)msg.data/max_value;
+      float percentage= (float)msg.data/max_value;
+
+
+      //DELETE THIS, ON PERCENTAGE BEING FORCED BEACAUSE CANT CORRECT BUG IN MICRO
+      on_percentage_=70;
+      //FORCOING IT TO 70
 
       int8_t state[1] = {};
       if(percentage>=on_percentage_) // ON
