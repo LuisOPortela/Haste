@@ -1,0 +1,16 @@
+/home/vboxuser/Haste/src/install/type1_node/lib/type1_node/type1_node
+/home/vboxuser/Haste/src/install/type1_node/share/ament_index/resource_index/package_run_dependencies/type1_node
+/home/vboxuser/Haste/src/install/type1_node/share/ament_index/resource_index/parent_prefix_path/type1_node
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/environment/ament_prefix_path.sh
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/environment/ament_prefix_path.dsv
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/environment/path.sh
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/environment/path.dsv
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/local_setup.bash
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/local_setup.sh
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/local_setup.zsh
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/local_setup.dsv
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/package.dsv
+/home/vboxuser/Haste/src/install/type1_node/share/ament_index/resource_index/packages/type1_node
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/cmake/type1_nodeConfig.cmake
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/cmake/type1_nodeConfig-version.cmake
+/home/vboxuser/Haste/src/install/type1_node/share/type1_node/package.xml

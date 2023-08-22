@@ -1,0 +1,9 @@
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/uninstall.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/type4_node_uninstall.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/test.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/edit_cache.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/rebuild_cache.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/list_install_components.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/install.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/install/local.dir
+/home/vboxuser/Haste/src/build/type4_node/CMakeFiles/install/strip.dir
