@@ -30,7 +30,7 @@ class Type31_Node : public rclcpp::Node
     : Node(name)
     {
       declare_parameter("name","type31_default");
-      declare_parameter("sensor_name","type1_default");
+      declare_parameter("sensor_name","type31_default");
       declare_parameter("on_percentage",50);
 
       get_parameter("name",name_);
