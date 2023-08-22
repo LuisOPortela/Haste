@@ -1,4 +1,0 @@
-source;share/i2c_scan/local_setup.bash
-source;share/i2c_scan/local_setup.dsv
-source;share/i2c_scan/local_setup.sh
-source;share/i2c_scan/local_setup.zsh
