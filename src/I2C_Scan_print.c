@@ -11,19 +11,8 @@
 void ScanforModules(int file,uint8_t *adresses)
 {
     	uint8_t i;
-    	uint8_t j=0;
-    	uint8_t module_counter=0;
-    	uint8_t data[1] = {0};
-    	
-    	uint8_t first = 0x10, last = 0x30;
-    	for (i = first; i < last; i++)
-    	{
-    		
-    		printf("ADRESS A CHECKAR:%x\n",i);
-    		ioctl(file, I2C_SLAVE, i);
-    	
-    		if(read(file, data, 1) != 1) //not found
-    		{
+    	uint8_t j=0;    		adresses[j]=i;
+
         		continue;
     		}		
     		
