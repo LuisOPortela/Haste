@@ -60,8 +60,9 @@ class Simple_motor_control : public rclcpp::Node
       int left_b_motor;
       int right_b_motor;
 
-      switch (state)
+      switch (char(state))
       {
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Here we go");
         case 'w' :    //Front
           
           left_motor=75;
