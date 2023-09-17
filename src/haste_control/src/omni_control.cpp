@@ -25,15 +25,15 @@ int         radius={};
 
 
 
-class Simple_motor_control : public rclcpp::Node
+class Omni_control : public rclcpp::Node
 {
   public:
-    Simple_motor_control(const std::string &name)       //constructor variable
+    Omni_control(const std::string &name)       //constructor variable
     : Node(name)                              //initiate node name with the variable name
     {
 
       subscription_ = this->create_subscription<std_msgs::msg::Int16>(
-        "topic_omni_control", 10,std::bind(&Simple_motor_control::smc_callback,this, _1));
+        "topic_omni_control", 10,std::bind(&Omni_control::omni_callback,this, _1));
     
       pub_motor1_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Left", 10);
       pub_motor2_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Right", 10);
@@ -52,7 +52,7 @@ class Simple_motor_control : public rclcpp::Node
     int on_percentage_;
 
     //process received data
-    void smc_callback(const std_msgs::msg::Int16 & msg)
+    void omni_callback(const std_msgs::msg::Int16 & msg)
     {
       uint16_t state=msg.data;
       int left_motor;
@@ -63,6 +63,18 @@ class Simple_motor_control : public rclcpp::Node
       switch (char(state))
       {
         RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Here we go");
+        
+        case 'x' :    //Stop
+          
+          left_motor=0;
+          right_motor=0;
+          left_b_motor=0;
+          right_b_motor=0;
+          
+          break;
+        
+        
+        
         case 'w' :    //Front
           
           left_motor=75;
@@ -184,7 +196,7 @@ class Simple_motor_control : public rclcpp::Node
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<Simple_motor_control>("Simple_motor_control"));
+  rclcpp::spin(std::make_shared<Omni_control>("Omni_control"));
   rclcpp::shutdown();
   return 0;
 }
