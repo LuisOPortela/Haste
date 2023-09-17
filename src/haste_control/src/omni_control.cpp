@@ -54,28 +54,26 @@ class Omni_control : public rclcpp::Node
     //process received data
     void omni_callback(const std_msgs::msg::Int16 & msg)
     {
-      uint16_t state=msg.data;
+      int16_t state=msg.data;
       int left_motor;
       int right_motor;
       int left_b_motor;
       int right_b_motor;
 
-      switch (char(state))
+      switch (state)
       {
         RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Here we go");
         
-        case 'x' :    //Stop
-          
+        case 120 :    //Stop x
+           
           left_motor=0;
           right_motor=0;
           left_b_motor=0;
           right_b_motor=0;
           
           break;
-        
-        
-        
-        case 'w' :    //Front
+
+        case 119 :    //Front w
           
           left_motor=75;
           right_motor=75;
@@ -84,7 +82,7 @@ class Omni_control : public rclcpp::Node
           
           break;
         
-        case 'a':    //Left
+        case 97:    //Left a
           
           left_motor=-75;
           right_motor=75;
@@ -93,7 +91,7 @@ class Omni_control : public rclcpp::Node
 
           break;
 
-        case 'd' :    //Right 
+        case 100:    //Right d
           
           left_motor=75;
           right_motor=-75;
@@ -102,7 +100,7 @@ class Omni_control : public rclcpp::Node
 
           break;
 
-        case 's':    //Back 
+        case 115:    //Back  s
           
           left_motor=-75;
           right_motor=-75;
@@ -111,7 +109,7 @@ class Omni_control : public rclcpp::Node
           
           break;
         
-        case 'q':    //Left diagonal 
+        case 113:    //Left diagonal  q
           
           left_motor=0;
           right_motor=75;
@@ -120,7 +118,7 @@ class Omni_control : public rclcpp::Node
           
           break;
 
-        case 'e':    //Right Diagonal
+        case 101:    //Right Diagonal e
           
           left_motor=75;
           right_motor=0;
@@ -129,7 +127,7 @@ class Omni_control : public rclcpp::Node
           
           break;
 
-        case 'j':    //Rotate Right
+        case 106:    //Rotate Right j 
           
           left_motor=75;
           right_motor=-75;
@@ -138,7 +136,7 @@ class Omni_control : public rclcpp::Node
 
           break;
           
-        case 'k':    //Rotate Left
+        case 107:    //Rotate Left k
           
           left_motor=-75;
           right_motor=75;
@@ -150,7 +148,7 @@ class Omni_control : public rclcpp::Node
         default:
           break;
       }
-
+  
 
       //Send Left Motor commands
       auto message = std_msgs::msg::Int16();
