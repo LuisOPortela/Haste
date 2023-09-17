@@ -31,12 +31,7 @@ class Simple_motor_control : public rclcpp::Node
     Simple_motor_control(const std::string &name)       //constructor variable
     : Node(name)                              //initiate node name with the variable name
     {
-      //declaring parameters sent from outside
-      
-     /*
-      subscription_ = this->create_subscription<std_msgs::msg::Int16>(
-        "topic_node_manager", 10,std::bind(&Simple_motor_control::node_manager_callback,this, _1));
-    */
+
       subscription_ = this->create_subscription<std_msgs::msg::Int16>(
         "topic_omni_control", 10,std::bind(&Simple_motor_control::smc_callback,this, _1));
     

@@ -26,7 +26,7 @@ endif()
 add_executable(simple_motor_control src/simple_motor_control.cpp)
 ament_target_dependencies(simple_motor_control rclcpp std_msgs)
 
-add_executable(omni_control src/simple_motor_control.cpp)
+add_executable(omni_control src/omni_control.cpp)
 ament_target_dependencies(omni_control rclcpp std_msgs)
 
 install(TARGETS
