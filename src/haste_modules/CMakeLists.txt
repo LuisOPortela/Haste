@@ -32,6 +32,7 @@ ament_target_dependencies(type4_node rclcpp std_msgs my_library)
 
 install(TARGETS
   type1_node
+  type2_node
   type31_node
   type4_node
   DESTINATION lib/${PROJECT_NAME})
