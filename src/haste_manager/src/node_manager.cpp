@@ -156,7 +156,7 @@ class Node_manager : public rclcpp::Node
               new_node_1.name.pop_back(); //line needed to cut null signal at the end of string
 
               //CREATE NODE
-              std::string command="ros2 run type1_node type1_node --ros-args --remap __node:=" +new_node_1.name+ 
+              std::string command="ros2 run haste_modules type1_node --ros-args --remap __node:=" +new_node_1.name+ 
               " -p measure_frequency:=" +std::to_string(new_node_1.measure_frequency)+ + 
               " -p max_value:=" +std::to_string(new_node_1.max_value)+  " -p name:=" +new_node_1.name+ " &";
 
@@ -208,7 +208,7 @@ class Node_manager : public rclcpp::Node
               new_node_2.name.pop_back(); //line needed to cut null signal at the end of string
 
               //CREATE NODE
-              std::string command="ros2 run type2_node type2_node --ros-args --remap __node:=" +new_node_2.name+ 
+              std::string command="ros2 run haste_modules type2_node --ros-args --remap __node:=" +new_node_2.name+ 
               " -p measure_frequency:=" +std::to_string(new_node_2.measure_frequency)+ + " -p max_value:=" +std::to_string(new_node_2.max_value)+  
               " -p name:=" +new_node_2.name+" -p i2c_adress:=" +std::to_string(adress)+ " &";
 
@@ -287,7 +287,7 @@ class Node_manager : public rclcpp::Node
               
               //CREATE NODE
 
-              std::string command="ros2 run type31_node type31_node --ros-args --remap __node:="+new_node_31.name+
+              std::string command="ros2 run haste_modules type31_node --ros-args --remap __node:="+new_node_31.name+
               " -p sensor_name:=" + new_node_31.sensor_name+" -p on_percentage:=" + std::to_string(new_node_31.on_percentage)+ " &";
 
               RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Commando %s",command.c_str());
@@ -350,7 +350,7 @@ class Node_manager : public rclcpp::Node
 
               //CREATE NODE
 
-              std::string command="ros2 run type4_node type4_node --ros-args --remap __node:=" +new_node_4.name+ 
+              std::string command="ros2 run haste_modules type4_node --ros-args --remap __node:=" +new_node_4.name+ 
               " -p name:=" +new_node_4.name+                      " -p wheel_type:=" +std::to_string(new_node_4.wheel_type)+
               " -p radius:=" + std::to_string(new_node_4.radius)+ " -p i2c_adress:=" +std::to_string(adress)+ " &";
 

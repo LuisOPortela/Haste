@@ -18,7 +18,7 @@ class MinimalPublisher : public rclcpp::Node
 {
   public:
     MinimalPublisher()
-    : Node("minimal_sub"){s
+    : Node("minimal_sub"){
 
         subscription_ = this->create_subscription<std_msgs::msg::Int16MultiArray>(
         "Teste", 10,std::bind(&MinimalPublisher::topic_callback,this, _1));
