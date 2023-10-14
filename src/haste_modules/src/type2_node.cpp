@@ -76,11 +76,12 @@ class Type2_Node : public rclcpp::Node
       
 
 
-      for(i=0;i<number_of_values_*2;i+=2)
+      for(i=0;i<number_of_values_*2;i+=2){
+     
         aux= (data[i]<<8)|data[i+1];
         message.data.push_back(aux);
-        RCLCPP_INFO(this->get_logger(), "Received sensor data:%d and %d",data[i],data[i+1]);
-
+        //RCLCPP_INFO(this->get_logger(), "Received sensor data:%d and %d",data[i],data[i+1]);
+      }
       publisher_->publish(message);
 
     }
