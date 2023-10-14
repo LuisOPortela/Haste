@@ -1,0 +1,98 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.3 (/home/vboxuser/ros2_humble/install/ament_cmake/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.3 (/home/vboxuser/ros2_humble/install/rclcpp/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.4 (/home/vboxuser/ros2_humble/install/rosidl_generator_c/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.4 (/home/vboxuser/ros2_humble/install/rosidl_adapter/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.4 (/home/vboxuser/ros2_humble/install/rosidl_generator_cpp/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_introspection_c;rosidl_typesupport_fastrtps_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_introspection_cpp;rosidl_typesupport_fastrtps_cpp
+-- Found rmw_implementation_cmake: 6.1.1 (/home/vboxuser/ros2_humble/install/rmw_implementation_cmake/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.2 (/home/vboxuser/ros2_humble/install/rmw_fastrtps_cpp/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /home/vboxuser/ros2_humble/install/fastrtps/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found ament_lint_auto: 0.12.5 (/home/vboxuser/ros2_humble/install/ament_lint_auto/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vboxuser/Haste/src/build/teste
+[ 16%] [32mBuilding CXX object CMakeFiles/intarrayreceive.dir/src/intarrayreceive.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/teste.dir/src/teste.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/intarraysend.dir/src/intarraysend.cpp.o[0m
+[01m[K/home/vboxuser/Haste/src/teste/src/intarrayreceive.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::topic_callback(const Int16MultiArray&)[m[K’:
+[01m[K/home/vboxuser/Haste/src/teste/src/intarrayreceive.cpp:33:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<short int, std::allocator<short int> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   33 |       for(auto i=0; [01;35m[Ki<message.data.size()[m[K;i++){
+      |                     [01;35m[K~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/intarrayreceive.cpp:28:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   28 |     void topic_callback([01;35m[Kconst std_msgs::msg::Int16MultiArray & msg[m[K)
+      |                         [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/teste.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::timer_callback()[m[K’:
+[01m[K/home/vboxuser/Haste/src/teste/src/teste.cpp:34:22:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<std::__cxx11::basic_string<char> >::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+   34 |       for(auto i=0; [01;35m[Ki<list.size()[m[K;i++){
+      |                     [01;35m[K~^~~~~~~~~~~~[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:37:38:[m[K [01;31m[Kerror: [m[K‘[01m[KString[m[K’ is not a member of ‘[01m[Kstd_msgs::msg[m[K’
+   37 |     rclcpp::Publisher<std_msgs::msg::[01;31m[KString[m[K>::SharedPtr publisher_;
+      |                                      [01;31m[K^~~~~~[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:37:44:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   37 |     rclcpp::Publisher<std_msgs::msg::String[01;31m[K>[m[K::SharedPtr publisher_;
+      |                                            [01;31m[K^[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:37:47:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+   37 |     rclcpp::Publisher<std_msgs::msg::String>::[01;31m[KSharedPtr[m[K publisher_;
+      |                                               [01;31m[K^~~~~~~~~[m[K
+      |                                                        [32m[K;[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:37:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ does not name a type; did you mean ‘[01m[Krmw_publisher_t[m[K’?
+   37 |     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr [01;31m[Kpublisher_[m[K;
+      |                                                         [01;31m[K^~~~~~~~~~[m[K
+      |                                                         [32m[Krmw_publisher_t[m[K
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:[m[K In constructor ‘[01m[KMinimalPublisher::MinimalPublisher()[m[K’:
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:22:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_publisher_t[m[K’?
+   22 |       [01;31m[Kpublisher_[m[K = this->create_publisher<std_msgs::msg::Int16MultiArray>("Teste", 10);
+      |       [01;31m[K^~~~~~~~~~[m[K
+      |       [32m[Krmw_publisher_t[m[K
+In file included from [01m[K/home/vboxuser/ros2_humble/build/rclcpp/include/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/home/vboxuser/ros2_humble/install/rclcpp/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:8[m[K:
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:[m[K In member function ‘[01m[Kvoid MinimalPublisher::timer_callback()[m[K’:
+[01m[K/home/vboxuser/Haste/src/teste/src/intarraysend.cpp:34:59:[m[K [01;31m[Kerror: [m[K‘[01m[Ki[m[K’ was not declared in this scope
+   34 |       RCLCPP_INFO(this->get_logger(), "Number  %d: '%d'", [01;31m[Ki[m[K,message.data[i]);
+      |                                                           [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/intarraysend.dir/build.make:76: CMakeFiles/intarraysend.dir/src/intarraysend.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/intarraysend.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 66%] [32m[1mLinking CXX executable teste[0m
+[ 66%] Built target teste
+[ 83%] [32m[1mLinking CXX executable intarrayreceive[0m
+[ 83%] Built target intarrayreceive
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,30 @@
+[35m[1mConsolidate compiler generated dependencies of target teste[0m
+[35m[1mConsolidate compiler generated dependencies of target intarraysend[0m
+[35m[1mConsolidate compiler generated dependencies of target intarrayreceive[0m
+[ 33%] Built target teste
+[ 50%] [32mBuilding CXX object CMakeFiles/intarraysend.dir/src/intarraysend.cpp.o[0m
+[ 83%] Built target intarrayreceive
+[100%] [32m[1mLinking CXX executable intarraysend[0m
+[100%] Built target intarraysend
+-- Install configuration: ""
+-- Installing: /home/vboxuser/Haste/src/install/teste/lib/teste/teste
+-- Set runtime path of "/home/vboxuser/Haste/src/install/teste/lib/teste/teste" to ""
+-- Installing: /home/vboxuser/Haste/src/install/teste/lib/teste/intarrayreceive
+-- Set runtime path of "/home/vboxuser/Haste/src/install/teste/lib/teste/intarrayreceive" to ""
+-- Installing: /home/vboxuser/Haste/src/install/teste/lib/teste/intarraysend
+-- Set runtime path of "/home/vboxuser/Haste/src/install/teste/lib/teste/intarraysend" to ""
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/ament_index/resource_index/package_run_dependencies/teste
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/ament_index/resource_index/parent_prefix_path/teste
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/environment/ament_prefix_path.sh
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/environment/ament_prefix_path.dsv
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/environment/path.sh
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/environment/path.dsv
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/local_setup.bash
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/local_setup.sh
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/local_setup.zsh
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/local_setup.dsv
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/package.dsv
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/ament_index/resource_index/packages/teste
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/cmake/testeConfig.cmake
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/cmake/testeConfig-version.cmake
+-- Installing: /home/vboxuser/Haste/src/install/teste/share/teste/package.xml

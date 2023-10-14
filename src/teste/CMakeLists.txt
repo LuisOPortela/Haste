@@ -13,6 +13,13 @@ find_package(std_msgs REQUIRED)
 add_executable(teste src/teste.cpp)
 ament_target_dependencies(teste rclcpp std_msgs)
 
+add_executable(intarrayreceive src/intarrayreceive.cpp)
+ament_target_dependencies(intarrayreceive rclcpp std_msgs)
+
+add_executable(intarraysend src/intarraysend.cpp)
+ament_target_dependencies(intarraysend rclcpp std_msgs)
+
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -27,6 +34,8 @@ endif()
 
 install(TARGETS
   teste
+  intarrayreceive
+  intarraysend
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

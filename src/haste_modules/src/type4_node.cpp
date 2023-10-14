@@ -64,6 +64,7 @@ class Type4_Node : public rclcpp::Node
     int wheel_type_;
     int radius_;
     int i2c_adress_;
+    
     //process received data
     void topic_callback(const std_msgs::msg::Int16 & msg)
     {

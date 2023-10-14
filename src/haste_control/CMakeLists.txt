@@ -29,9 +29,13 @@ ament_target_dependencies(simple_motor_control rclcpp std_msgs)
 add_executable(omni_control src/omni_control.cpp)
 ament_target_dependencies(omni_control rclcpp std_msgs)
 
+add_executable(line_follow src/line_follow.cpp)
+ament_target_dependencies(line_follow rclcpp std_msgs)
+
 install(TARGETS
   simple_motor_control
   omni_control
+  line_follow
   DESTINATION lib/${PROJECT_NAME})
 
 

@@ -19,7 +19,7 @@ struct type1_params{
 std::string name={};
 int measure_frequency=0;
 int number_of_values=0;
-std::vector<int> max_value={};
+int max_value=0;
 };
 
 
@@ -32,10 +32,12 @@ class Type1_Node : public rclcpp::Node
       declare_parameter("name","type1_default");
       declare_parameter("measure_frequency",500);
       declare_parameter("number_of_values",1);
+      declare_parameter("max_value",100);
 
       get_parameter("name",name_);
       get_parameter("measure_frequency",measure_frequency_);
       get_parameter("number_of_values",number_of_values_);
+      get_parameter("max_value",max_value_);
       
       std::string aux_topic = "topic_";
       
@@ -60,10 +62,9 @@ class Type1_Node : public rclcpp::Node
     //Params list
     std::string name_;
     int measure_frequency_;
-    //assuming number of values is always 1
     int number_of_values_;
-    std::vector<int> max_value_;
-    
+    int max_value_;
+     // IT ASSUMES ONLY ONE VALUE
 
     void timer_callback()
     {
