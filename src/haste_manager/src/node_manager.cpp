@@ -209,7 +209,7 @@ class Node_manager : public rclcpp::Node
 
               //CREATE NODE
               std::string command="ros2 run haste_modules type2_node --ros-args --remap __node:=" +new_node_2.name+ 
-              " -p measure_frequency:=" +std::to_string(new_node_2.measure_frequency)+ "-p number_of_values:=" + std::to_string(new_node_2.number_of_values) +
+              " -p measure_frequency:=" +std::to_string(new_node_2.measure_frequency)+ " -p number_of_values:=" + std::to_string(new_node_2.number_of_values) +
               " -p max_value:=" +std::to_string(new_node_2.max_value)+  " -p name:=" +new_node_2.name+
               " -p i2c_adress:=" +std::to_string(adress)+ " &";
 
