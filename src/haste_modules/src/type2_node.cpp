@@ -27,7 +27,7 @@ class Type2_Node : public rclcpp::Node
       declare_parameter("measure_frequency",500);
       declare_parameter("number_of_values",1);
       declare_parameter("max_value",100);
-      declare_parameter("i2c_adress",50);
+      declare_parameter("i2c_adress",22);
 
       get_parameter("name",name_);
       get_parameter("measure_frequency",measure_frequency_);
@@ -71,12 +71,15 @@ class Type2_Node : public rclcpp::Node
       uint16_t aux;
 
       write(file, M, 1);
-      read (file, data, number_of_values_);
+      read (file, data, number_of_values_*2);
       
+
+
       for(int i=0;i<number_of_values_*2;i+=2)
         aux= (data[i]<<8)|data[i+1];
         message.data.push_back(aux);
-      
+        RCLCPP_INFO(this->get_logger(), "Received sensor data:%d and %d",data[i],data[i+1]);
+
       publisher_->publish(message);
 
     }
