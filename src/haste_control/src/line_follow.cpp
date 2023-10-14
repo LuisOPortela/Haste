@@ -55,7 +55,7 @@ class Line_follow_control : public rclcpp::Node
     {
 
       //PROCESS DATA
-
+      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "msg1 %d msg2 %d msg3 %d msg4 %d msg5 %d",msg.data[0],msg.data[1],msg.data[2],msg.data[3],msg.data[4]);
       int position=( 4000*msg.data[0]+ 3000*msg.data[1] + 2000*msg.data[2] + 1000*msg.data[3] + 0*msg.data[4])/
       (msg.data[0] + msg.data[1] + msg.data[2] + msg.data[3] + msg.data[4]);
 
