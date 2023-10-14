@@ -62,6 +62,7 @@ class Type2_Node : public rclcpp::Node
 
     void timer_callback()
     {
+      int i;
       auto message = std_msgs::msg::Int16MultiArray();
   
       ioctl(file, I2C_SLAVE, i2c_adress_);
@@ -75,7 +76,7 @@ class Type2_Node : public rclcpp::Node
       
 
 
-      for(int i=0;i<number_of_values_*2;i+=2)
+      for(i=0;i<number_of_values_*2;i+=2)
         aux= (data[i]<<8)|data[i+1];
         message.data.push_back(aux);
         RCLCPP_INFO(this->get_logger(), "Received sensor data:%d and %d",data[i],data[i+1]);
