@@ -41,7 +41,7 @@ class Type2_Node : public rclcpp::Node
       
       publisher_ = this->create_publisher<std_msgs::msg::Int16MultiArray>(aux_topic+name_, 10);
       timer_ = this->create_wall_timer(
-      50ms, std::bind(&Type2_Node::timer_callback, this));
+      100ms, std::bind(&Type2_Node::timer_callback, this));
     
       char *bus = "/dev/i2c-1";
       if((file = open(bus, O_RDWR)) < 0)

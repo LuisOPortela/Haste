@@ -32,7 +32,7 @@ class Line_follow_control : public rclcpp::Node
       pub_motor1_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Left", 10);
       pub_motor2_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Right", 10);
     
-      declare_parameter("kp",1.0);
+      declare_parameter("kp",3.0);
       declare_parameter("kd",0.0);
 
 
@@ -55,7 +55,7 @@ class Line_follow_control : public rclcpp::Node
 
     int last_proportional = 0;
     int integral = 0;
-    int spd = 100; 
+    int spd = 75; 
     int c = 0;
     float distance;
 
@@ -73,7 +73,7 @@ class Line_follow_control : public rclcpp::Node
     {
 
       //PROCESS DATA
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "msg1 %d msg2 %d msg3 %d msg4 %d msg5 %d",msg.data[0],msg.data[1],msg.data[2],msg.data[3],msg.data[4]);
+      //RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "msg1 %d msg2 %d msg3 %d msg4 %d msg5 %d",msg.data[0],msg.data[1],msg.data[2],msg.data[3],msg.data[4]);
       int position=( 4000*msg.data[0]+ 3000*msg.data[1] + 2000*msg.data[2] + 1000*msg.data[3] + 0*msg.data[4])/
       (msg.data[0] + msg.data[1] + msg.data[2] + msg.data[3] + msg.data[4]);
 
