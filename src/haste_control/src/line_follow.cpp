@@ -62,7 +62,7 @@ class Line_follow_control : public rclcpp::Node
     //PID
     int i; 
     int power_difference = 0;
-    float Kp_, Ki=0, Kd_;
+    float kp_, Ki=0, kd_;
     unsigned int position;
     int derivative, proportional;
 
