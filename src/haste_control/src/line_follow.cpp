@@ -31,7 +31,25 @@ class Line_follow_control : public rclcpp::Node
     
       pub_motor1_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Left", 10);
       pub_motor2_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Right", 10);
+    
+      declare_parameter("kp","1");
+      declare_parameter("kd",0);
+
+
+      get_parameter("kp",kp_);
+      get_parameter("kd",kd_);
+
+    
+    
+    
+    
+    
+    
+    
     }
+
+
+
 
   private:
 
@@ -44,7 +62,7 @@ class Line_follow_control : public rclcpp::Node
     //PID
     int i; 
     int power_difference = 0;
-    float Kp=5.5, Ki=1, Kd=0;
+    float Kp_, Ki=0, Kd_;
     unsigned int position;
     int derivative, proportional;
 
@@ -61,7 +79,7 @@ class Line_follow_control : public rclcpp::Node
 
       RCLCPP_INFO(this->get_logger(), "position  %d", position);
       
-      proportional = (position - 2500);
+      proportional = (position - 2000);
     
       derivative = proportional - last_proportional;
       integral = integral+proportional;
