@@ -32,8 +32,8 @@ class Line_follow_control : public rclcpp::Node
       pub_motor1_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Left", 10);
       pub_motor2_ = this->create_publisher<std_msgs::msg::Int16>("topic_Motor_Right", 10);
     
-      declare_parameter("kp",1);
-      declare_parameter("kd",0);
+      declare_parameter("kp",1.0);
+      declare_parameter("kd",0.0);
 
 
       get_parameter("kp",kp_);
