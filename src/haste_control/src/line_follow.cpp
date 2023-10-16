@@ -87,7 +87,7 @@ class Line_follow_control : public rclcpp::Node
       last_proportional = proportional;
     // use the tutorial to set initial values of Kp, Ki, and Kd
       
-      power_difference = proportional*Kp_ + integral*Ki + derivative*Kd_;
+      power_difference = proportional*kp_ + integral*Ki + derivative*kd_;
       const int max = spd/2 + 30;
       if(power_difference > max)
        power_difference = max;
