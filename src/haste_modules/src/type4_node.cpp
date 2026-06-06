@@ -50,8 +50,8 @@ class Type4_Node : public rclcpp::Node
     
       
       //start i2cbus 
-      char *bus = "/dev/i2c-1";
-      if((file = open(bus, O_RDWR)) < 0)
+      const char *BUS = "/dev/i2c-1";
+      if((fd_i2c_ = open(BUS, O_RDWR)) < 0)
 	    {
 	      printf("Failed to open the bus. \n");
 	    } 
@@ -97,15 +97,15 @@ class Type4_Node : public rclcpp::Node
       }
 
 
-      ioctl(file, I2C_SLAVE, i2c_adress_);
-      write(file, M, 2);
+      ioctl(fd_i2c_, I2C_SLAVE, i2c_adress_);
+      write(fd_i2c_, M, 2);
 
       RCLCPP_INFO(this->get_logger(), "Received motor control of:%d",msg.data);
 
     }
 
     rclcpp::Subscription<std_msgs::msg::Int16>::SharedPtr subscription_;
-    int file;
+    int fd_i2c_;
 
 };
 

@@ -19,9 +19,9 @@ using namespace std::chrono_literals;
 
 /*###### Node Manager Parameters######*/
 
-std::string Node_name = "Topic_Node_name";
-std::chrono::milliseconds Frequency = 3000ms;
-uint8_t first_adress= 10, last_adress= 50;
+const std::string NODE_NAME = "Topic_Node_name";
+const std::chrono::milliseconds FREQUENCY = 3000ms;
+const uint8_t ADRESS_MIN= 10, ADRESS_MAX= 50;
 
 /*###############################*/
 
@@ -32,14 +32,14 @@ class Node_manager : public rclcpp::Node
     : Node("node_manager")
     {
       
-      publisher_ = this->create_publisher<std_msgs::msg::UInt8MultiArray>(Node_name, 10);
-      timer_ = this->create_wall_timer(Frequency, std::bind(&Node_manager::timer_callback, this));
-    
-      char *bus = "/dev/i2c-1";                  //Open I2C Bus
-      if((file = open(bus, O_RDWR)) < 0)
+      publisher_ = this->create_publisher<std_msgs::msg::UInt8MultiArray>(NODE_NAME, 10);
+      timer_ = this->create_wall_timer(FREQUENCY, std::bind(&Node_manager::timer_callback, this));
+      
+      //Open I2C Bus
+      const char *BUS = "/dev/i2c-1";                  
+      if((fd_i2c_ = open(BUS, O_RDWR)) == -1)
 	    {
-	      printf("Failed to open the bus. \n");
-		  
+        RCLCPP_ERROR(rclcpp::get_logger("Node Manager"), "Failed to open the I2C bus: %s" ,std::strerror(errno));
 	    } 
     }
 
@@ -48,29 +48,31 @@ class Node_manager : public rclcpp::Node
     //Timer_callback is the Main loop of the node
     void timer_callback()
     {
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Timer_Callback");
-      std::vector<uint8_t> adresses=module_scanner(); //Get adresses of connected modules
-      node_creator(adresses);                         //Verify if new nodes need to be created
+      RCLCPP_DEBUG(rclcpp::get_logger("Node Manager"), "Timer_Callback");
+
+      std::vector<uint8_t> connected_adresses=module_scanner(); //Get adresses of connected modules
+      node_creator(connected_adresses);                         //Verify if new nodes need to be created
+
     }
 
 
     //Scans the connected modules in the I2C bus
     std::vector<uint8_t> module_scanner()
     {
+      RCLCPP_DEBUG(rclcpp::get_logger("Node Manager"), "Scanning for connected modules");
       
-      int i,j;
-      uint8_t data[1] = {0};
+      int j;
+      //! Tirar estas aspas?
+      uint8_t data[1] = {};
       
       std::vector<uint8_t> adresses;
       //auto message = std_msgs::msg::UInt8MultiArray();
-      
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Scanning for connected modules");
     	
-      for (i = first_adress; i < last_adress; i++)
+      for (int i = ADRESS_MIN; i < ADRESS_MAX; i++)
     	{
     		
-    		ioctl(file, I2C_SLAVE, i);
-    		if(read(file, data, 1) != 1) //not found
+    		ioctl(fd_i2c_, I2C_SLAVE, i);
+    		if(read(fd_i2c_, data, 1) != 1) //not found
     		{
         	continue;
     		}			
@@ -81,7 +83,7 @@ class Node_manager : public rclcpp::Node
       
       }
       
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Number of modules detected: %i",adresses.size());
+      RCLCPP_INFO(rclcpp::get_logger("Node Manager"), "Number of modules detected: %lu",adresses.size());
       //publisher_->publish(message);
       return adresses;
     }
@@ -89,8 +91,8 @@ class Node_manager : public rclcpp::Node
     //Verify if new nodes need to be created and create them
     void node_creator(std::vector<uint8_t> adresses)
     {
+      RCLCPP_DEBUG(rclcpp::get_logger("Node Manager"), "Node Creator Cycle");
       
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Node Creator Cycle");
       std::vector<uint8_t> nodes_to_create={};
       
       //CHECK FOR UNCREATED NODES
@@ -111,7 +113,6 @@ class Node_manager : public rclcpp::Node
       //CREATE UNCREATED NODES
       if(nodes_to_create.size()!=0)
       {
-
         for(uint8_t adress : nodes_to_create)
         {
           //get type
@@ -119,26 +120,41 @@ class Node_manager : public rclcpp::Node
           
           M[0]=M_ASK_FOR_TYPE;
 
-          ioctl(file, I2C_SLAVE, adress);
+          ioctl(fd_i2c_, I2C_SLAVE, adress);
           
-          write(file, M, 1);
-          read (file, M, 1);
+          write(fd_i2c_, M, 1);
+          read (fd_i2c_, M, 1);
           
           
           ///get params for specific module type
           switch (M[0])
           {
+            //!CASE 0 IS TRYING TO MAKE THEM ALL AT THE SAME PLACE
+            case 0:
+            #define max_size 256
+            {
+                char M_1[max_size]={};
+              typex_params new_node;
+              M[0]=2; //2= M_T1_PARAMS_1
+
+              write(fd_i2c_, M, 1); 
+              read (fd_i2c_, M_1, T1_MESSAGE_SIZE);
+
+            }
+            
+            
+            
             case 1:       //TYPE 1 MODULE SIMPLE SENSOR
             {
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Creating Type 1 Node");
+              RCLCPP_INFO(rclcpp::get_logger("Node Manager"), "Creating Type 1 Node");
               
-              char M_1[T1_MESSAGE_1_SIZE]={};
+              char M_1[T1_MESSAGE_SIZE]={};
               type1_params new_node_1;
 
               M[0]=M_T1_PARAMS_1;
               
-              write(file, M, 1); 
-              read (file, M_1, T1_MESSAGE_1_SIZE);
+              write(fd_i2c_, M, 1); 
+              read (fd_i2c_, M_1, T1_MESSAGE_SIZE);
 
               std::string aux_name(M_1,NODE_NAME_SIZE);
 
@@ -190,8 +206,8 @@ class Node_manager : public rclcpp::Node
 
               M[0]=M_T2_PARAMS;
               
-              write(file, M, 1); 
-              read (file, M_1, T2_MESSAGE_SIZE);
+              write(fd_i2c_, M, 1); 
+              read (fd_i2c_, M_1, T2_MESSAGE_SIZE);
 
               std::string aux_name(M_1,NODE_NAME_SIZE);
 
@@ -242,8 +258,8 @@ class Node_manager : public rclcpp::Node
 
               M[0]=M_T31_PARAMS;
               
-              write(file, M, 1); 
-              read (file, M_1, T31_MESSAGE_SIZE);
+              write(fd_i2c_, M, 1); 
+              read (fd_i2c_, M_1, T31_MESSAGE_SIZE);
 
               //GET PARAMETER NAME
 
@@ -323,8 +339,8 @@ class Node_manager : public rclcpp::Node
 
               M[0]=M_T4_PARAMS;
               
-              write(file, M, 1); 
-              read (file, M_1, T4_MESSAGE_SIZE);
+              write(fd_i2c_, M, 1); 
+              read (fd_i2c_, M_1, T4_MESSAGE_SIZE);
 
               //GET 1st paramter 
               size_t aux_length = 0;
@@ -376,23 +392,19 @@ class Node_manager : public rclcpp::Node
             default:
             {
              
-              RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "CREATING ERROR:TYPE NOT FOUND");
+              RCLCPP_ERROR(rclcpp::get_logger("Node Manager"), "CREATING ERROR:TYPE NOT FOUND");
               break;
             }
          
           }
           //execute node
         }
-
-
       }
-    
-    
     }
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::UInt8MultiArray>::SharedPtr publisher_;
-    int file;
+    int fd_i2c_;
     
     std::vector<module_name_adress> created_nodes;
 

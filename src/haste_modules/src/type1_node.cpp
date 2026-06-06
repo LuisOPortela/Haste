@@ -47,7 +47,7 @@ class Type1_Node : public rclcpp::Node
       aux_timer, std::bind(&Type1_Node::timer_callback, this));
     
       char *bus = "/dev/i2c-1";
-      if((file = open(bus, O_RDWR)) < 0)
+      if((fd_i2c_ = open(bus, O_RDWR)) < 0)
 	    {
 	      printf("Failed to open the bus. \n");
 		  
@@ -70,12 +70,12 @@ class Type1_Node : public rclcpp::Node
     {
       auto message = std_msgs::msg::Int16();
   
-      ioctl(file, I2C_SLAVE, 0x20);
+      ioctl(fd_i2c_, I2C_SLAVE, 0x20);
 
     
       uint8_t reg[2] = {0x04,0};
-      write(file, reg, 1);
-      read (file, reg, 2);
+      write(fd_i2c_, reg, 1);
+      read (fd_i2c_, reg, 2);
       message.data=reg[0]*256+reg[1];
       
       publisher_->publish(message);
@@ -83,7 +83,7 @@ class Type1_Node : public rclcpp::Node
     }
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::Int16>::SharedPtr publisher_;
-    int file;
+    int fd_i2c_;
 
 };
 

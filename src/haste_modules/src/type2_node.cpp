@@ -44,7 +44,7 @@ class Type2_Node : public rclcpp::Node
       100ms, std::bind(&Type2_Node::timer_callback, this));
     
       char *bus = "/dev/i2c-1";
-      if((file = open(bus, O_RDWR)) < 0)
+      if((fd_i2c_ = open(bus, O_RDWR)) < 0)
 	    {
 	      printf("Failed to open the bus. \n");
 		  
@@ -65,14 +65,14 @@ class Type2_Node : public rclcpp::Node
       int i;
       auto message = std_msgs::msg::Int16MultiArray();
   
-      ioctl(file, I2C_SLAVE, i2c_adress_);
+      ioctl(fd_i2c_, I2C_SLAVE, i2c_adress_);
 
       uint8_t M[1] = {0x04};
       uint8_t data[100]={};     //SIZE JUST BE VARIABLE, BUT ISNT, CAPPED AT MAXIMUM 50 VALUES
       uint16_t aux;
 
-      write(file, M, 1);
-      read (file, data, number_of_values_*2);
+      write(fd_i2c_, M, 1);
+      read (fd_i2c_, data, number_of_values_*2);
       
 
 
@@ -88,7 +88,7 @@ class Type2_Node : public rclcpp::Node
     }
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<std_msgs::msg::Int16MultiArray>::SharedPtr publisher_;
-    int file;
+    int fd_i2c_;
 
 };
 

@@ -4,6 +4,15 @@
 #include <string>
 #include <vector>
 
+
+struct typex_params{
+std::string name={};
+std::string control_node={};
+int measure_frequency=0;
+int number_of_values=0;
+int max_value=0;
+};    
+
 struct type1_params{
 std::string name={};
 int measure_frequency=0;
@@ -71,9 +80,13 @@ uint8_t adress;
 #define M_T31_PARAMS 2
 #define M_T4_PARAMS 2
 
-#define T1_MESSAGE_1_SIZE NODE_NAME_SIZE+MEASURE_FREQUENCY_SIZE+NUMBER_OF_VALUE_SIZE+MAX_VALUE_SIZE
+#define T1_MESSAGE_SIZE NODE_NAME_SIZE+MEASURE_FREQUENCY_SIZE+NUMBER_OF_VALUE_SIZE+MAX_VALUE_SIZE
 #define T2_MESSAGE_SIZE   NODE_NAME_SIZE+MEASURE_FREQUENCY_SIZE+NUMBER_OF_VALUE_SIZE+MAX_VALUE_SIZE+CONTROL_NODE_SIZE
 #define T31_MESSAGE_SIZE  NODE_NAME_SIZE+SENSOR_NAME_SIZE+ACTIVATION_PERCENTAGE_SIZE
 #define T4_MESSAGE_SIZE   NODE_NAME_SIZE+WHEEL_TYPE_SIZE+RADIUS_SIZE
+
+//!TRYING TO MAKE THEM ALL AT THE SAME PLACE
+
+const std::vector<int> TX_MESSAGE_SIZE={0,T1_MESSAGE_SIZE,T2_MESSAGE_SIZE,T31_MESSAGE_SIZE,T4_MESSAGE_SIZE};
 
 #endif

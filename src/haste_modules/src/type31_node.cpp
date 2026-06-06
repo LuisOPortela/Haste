@@ -42,8 +42,8 @@ class Type31_Node : public rclcpp::Node
       subscription_ = this->create_subscription<std_msgs::msg::Int16>(
         aux_topic+sensor_name_, 10,std::bind(&Type31_Node::topic_callback,this, _1));
     
-      char *bus = "/dev/i2c-1";
-      if((file = open(bus, O_RDWR)) < 0)
+      const char *BUS = "/dev/i2c-1";
+      if((fd_i2c_ = open(BUS, O_RDWR)) < 0)
 	    {
 	      printf("Failed to open the bus. \n");
 		  
@@ -77,15 +77,15 @@ class Type31_Node : public rclcpp::Node
       else if(percentage<on_percentage_) // ON
         state[0]=10;
       
-      ioctl(file, I2C_SLAVE, 0x14);
-      write(file, state, 1);
+      ioctl(fd_i2c_, I2C_SLAVE, 0x14);
+      write(fd_i2c_, state, 1);
 
       RCLCPP_INFO(this->get_logger(), "GOT:%d ,Max value: %d Percentage:%d Sending state: '%d'",msg.data,max_value, percentage, state[0]);
 
     }
 
     rclcpp::Subscription<std_msgs::msg::Int16>::SharedPtr subscription_;
-    int file;
+    int fd_i2c_;
 
 };
 
